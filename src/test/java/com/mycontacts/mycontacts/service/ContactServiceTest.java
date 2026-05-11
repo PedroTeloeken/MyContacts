@@ -49,7 +49,7 @@ class ContactServiceTest {
 
         List<Contact> result = service.findAll();
 
-        assertThat(result).hasSize(3);
+        assertThat(result).hasSize(4);
         assertThat(result).hasSize(2);
         assertThat(result).extracting(Contact::getName).containsExactly("Maria", "Pedro");
     }

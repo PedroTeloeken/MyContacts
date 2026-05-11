@@ -1,0 +1,170 @@
+{
+  "info": {
+    "_postman_id": "9748888e-73cb-4aa9-9c0c-32f64decae5f",
+    "name": "MyContacts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51950056",
+    "_collection_link": "https://go.postman.co/collection/51950056-9748888e-73cb-4aa9-9c0c-32f64decae5f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "healthcheck",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "criar contato",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Ralf\",\r\n  \"phone\": \"47999999999\",\r\n  \"email\": \"ralf@email.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/contacts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "contacts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "listar contatos",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/contacts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "contacts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "listar contato por id",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/contacts/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "contacts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "atualizar contato",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"João\",\r\n  \"phone\": \"47888888888\",\r\n  \"email\": \"joao@email.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/contacts/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "contacts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "excluir contato",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"João\",\r\n  \"phone\": \"47888888888\",\r\n  \"email\": \"joao@email.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/contacts/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "contacts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

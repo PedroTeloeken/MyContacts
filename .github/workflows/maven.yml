@@ -11,7 +11,6 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +23,15 @@ jobs:
         java-version: '22'
         distribution: 'temurin'
         cache: maven
-        
+
+    - name: Testar conexao com secrets
+      env:
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      run: |
+        echo "DB_USERNAME: $DB_USERNAME"
+        echo "DB_PASSWORD: $DB_PASSWORD"
+
     - name: Run tests and build with Maven
       run: mvn clean verify
 

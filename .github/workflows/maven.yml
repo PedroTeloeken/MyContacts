@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   build:
+    name: Build Java ${{ matrix.java-version }}
     runs-on: ubuntu-latest
 
     strategy:

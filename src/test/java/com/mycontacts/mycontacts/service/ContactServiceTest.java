@@ -55,9 +55,13 @@ class ContactServiceTest {
 
         List<ContactResponse> responses = contactService.findAll();
 
-        assertEquals(2, responses.size());
-        assertEquals("Ana", responses.get(0).getName());
-        assertEquals("Bruno", responses.get(1).getName());
+        when(repository.findAll()).thenReturn(List.of(c1, c2));
+
+        List<Contact> result = service.findAll();
+
+        assertThat(result).hasSize(3);
+        assertThat(result).hasSize(2);
+        assertThat(result).extracting(Contact::getName).containsExactly("Maria", "Pedro");
     }
 
     @Test

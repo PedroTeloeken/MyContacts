@@ -13,14 +13,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        java-version: [ '17', '22' ]
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up JDK 22
+    - name: Set up JDK ${{ matrix.java-version }}
       uses: actions/setup-java@v4
       with:
-        java-version: '22'
+        java-version: ${{ matrix.java-version }}
         distribution: 'temurin'
         cache: maven
 

@@ -52,6 +52,8 @@ class ContactServiceTest {
 
         assertThat(result).extracting(Contact::getName).containsExactly("Maria", "Pedro");
         assertThat(result).hasSize(2);
+
+        
     } 
 
     @Test

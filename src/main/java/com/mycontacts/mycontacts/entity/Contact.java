@@ -1,11 +1,7 @@
 package com.mycontacts.mycontacts.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Setter;
 
 @Entity
 @Table(name = "contacts")
@@ -15,13 +11,11 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Setter
     private String name;
-
-    @Column(nullable = false)
+    @Setter
     private String phone;
-
-    @Column(nullable = false)
+    @Setter
     private String email;
 
     public Contact() {
@@ -41,23 +35,12 @@ public class Contact {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPhone() {
         return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

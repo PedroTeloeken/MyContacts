@@ -27,3 +27,10 @@ jobs:
         
     - name: Run tests and build with Maven
       run: mvn clean verify
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: mycontacts-build
+        path: target/*.jar
+        retention-days: 7

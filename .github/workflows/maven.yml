@@ -24,15 +24,21 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Testar conexao com secrets
+    - name: Demonstrar uso seguro de secrets
       env:
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        API_KEY: ${{ secrets.API_KEY }}
       run: |
-        echo "DB_USERNAME: $DB_USERNAME"
-        echo "DB_PASSWORD: $DB_PASSWORD"
+        echo "DB_USERNAME está configurado: $([ -n "$DB_USERNAME" ] && echo 'SIM' || echo 'NÃO')"
+        echo "DB_PASSWORD está configurado: $([ -n "$DB_PASSWORD" ] && echo 'SIM' || echo 'NÃO')"
+        echo "API_KEY está configurado: $([ -n "$API_KEY" ] && echo 'SIM' || echo 'NÃO')"
 
     - name: Run tests and build with Maven
+      env:
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        API_KEY: ${{ secrets.API_KEY }}
       run: mvn clean verify
 
     - name: Upload build artifact

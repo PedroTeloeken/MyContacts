@@ -24,15 +24,15 @@ public class ContactService {
   }
 
   public void delete(Long id) {
-      findById(id);
-      repository.deleteById(id);
+    findById(id);
+    repository.deleteById(id);
   }
 
   public Contact findById(Long id) {
-      return repository.findById(id)
-              .orElseThrow(() -> new ResponseStatusException(
-                      HttpStatus.NOT_FOUND,
-                      "Contato não encontrado"
-              ));
+    return repository.findById(id)
+      .orElseThrow(() -> new ResponseStatusException(
+              HttpStatus.NOT_FOUND,
+              "Contato não encontrado"
+      ));
   }
 }

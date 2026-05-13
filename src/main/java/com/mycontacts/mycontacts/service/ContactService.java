@@ -28,6 +28,13 @@ public class ContactService {
     repository.deleteById(id);
   }
 
+  /**
+   * Busca um contato pelo ID.
+   *
+   * @param id ID do contato
+   * @return contato encontrado
+   */
+
   public Contact findById(Long id) {
     return repository.findById(id)
       .orElseThrow(() -> new ResponseStatusException(

@@ -2,17 +2,11 @@ FROM maven:3.9.9-eclipse-temurin-22 AS build
 
 WORKDIR /app
 
-COPY pom.xml .
-COPY .mvn .mvn
-COPY mvnw .
+COPY . .
 
 RUN chmod +x mvnw
 
-RUN ./mvnw dependency:go-offline
-
-COPY src src
-
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package
 
 FROM eclipse-temurin:22-jre
 

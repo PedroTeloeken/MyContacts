@@ -1,0 +1,40 @@
+services:
+
+  mysql:
+    image: mysql:8.4
+
+    container_name: mysql-db
+
+    restart: always
+
+    environment:
+      MYSQL_DATABASE: MyContactsDB
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    image: jainea/my_contacts:latest
+
+    container_name: my_contacts-api
+
+    restart: always
+
+    depends_on:
+      - mysql
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+volumes:
+  mysql_data:

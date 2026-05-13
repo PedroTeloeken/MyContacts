@@ -2,9 +2,7 @@ package com.mycontacts.mycontacts.controller;
 
 import com.mycontacts.mycontacts.entity.Contact;
 import com.mycontacts.mycontacts.service.ContactService;
-
 import jakarta.validation.Valid;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +32,7 @@ public class ContactController {
     return service.findAll();
   }
 
-  @DeleteMapping(value ="/{id}")
+  @DeleteMapping(value = "/{id}")
   public ResponseEntity<Void> delete(@Valid @PathVariable Long id) {
     service.delete(id);
     return ResponseEntity.noContent().build();

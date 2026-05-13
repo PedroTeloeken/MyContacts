@@ -23,17 +23,16 @@ public class ContactService {
     return repository.findAll();
   }
 
-public void delete(Long id) {
-    findById(id);
+  public void delete(Long id) {
+      findById(id);
+      repository.deleteById(id);
+  }
 
-    repository.deleteById(id);
-}
-
-public Contact findById(Long id) {
-    return repository.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(
-                    HttpStatus.NOT_FOUND,
-                    "Contato não encontrado"
-            ));
-}
+  public Contact findById(Long id) {
+      return repository.findById(id)
+              .orElseThrow(() -> new ResponseStatusException(
+                      HttpStatus.NOT_FOUND,
+                      "Contato não encontrado"
+              ));
+  }
 }

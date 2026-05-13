@@ -1,0 +1,53 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Java ${{ matrix.java-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java-version: [ '22', '23' ]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK ${{ matrix.java-version }}
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ matrix.java-version }}
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Demonstrar uso seguro de secrets
+      env:
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        API_KEY: ${{ secrets.API_KEY }}
+      run: |
+        echo "DB_USERNAME está configurado: $([ -n "$DB_USERNAME" ] && echo 'SIM' || echo 'NÃO')"
+        echo "DB_PASSWORD está configurado: $([ -n "$DB_PASSWORD" ] && echo 'SIM' || echo 'NÃO')"
+
+    - name: Run tests and build with Maven
+      env:
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        API_KEY: ${{ secrets.API_KEY }}
+      run: mvn clean verify
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: mycontacts-build-java-${{ matrix.java-version }}
+        path: target/*.jar
+        retention-days: 7

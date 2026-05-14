@@ -8,7 +8,7 @@ Imagem Docker pública: **[hub.docker.com/r/jainea/my_contacts](https://hub.dock
 
 ## Integrantes
 
-- Pedro Teloeken, 
+- Pedro Teloeken, Helena da Silva, Ralf Domingues, Pedro Henning, Jaine Andrade
 
 ---
 

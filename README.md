@@ -8,7 +8,7 @@ Imagem Docker pública: **[hub.docker.com/r/jainea/my_contacts](https://hub.dock
 
 ## Integrantes
 
-- Pedro Teloeken, Helena da Silva, Ralf Domingues, Pedro Henning, Jaine Andrade
+-  Helena da Silva, Jaine Andrade, Pedro Henning, Pedro Teloeken, Ralf Domingues
 
 ---
 
@@ -191,14 +191,14 @@ Secrets configurados no repositório:
 Referenciados no workflow via `${{ secrets.NOME_DO_SECRET }}`.
 
 **Pergunta — por que nunca devemos commitar credenciais no código?**
-O Git mantém histórico permanente: mesmo apagando depois, a credencial fica acessível em commits antigos. Em repositórios públicos isso vira exposição imediata, e mesmo em privados aumenta a superfície de ataque (qualquer pessoa com acesso ao histórico vê a senha). Rotacionar uma credencial vazada exige reescrever histórico, o que é caro e arriscado. Secrets do GitHub Actions são criptografados em repouso, injetados apenas em runtime e mascarados automaticamente nos logs.
+A credencial fica acessível em commits no repositório. Em repositórios públicos isso vira exposição , e mesmo em privados aumenta a superfície de ataque (qualquer pessoa com acesso ao histórico vê a senha). Secrets do GitHub Actions são criptografados em repouso, injetados apenas em runtime e mascarados automaticamente nos logs.
 
 ### Tarefa 6 — Matriz de Versões
 
 O workflow usa `strategy.matrix` para rodar os jobs em **Java 22 e Java 23**, garantindo compatibilidade com a versão LTS atual e a próxima.
 
 **Pergunta — qual versão apresentou diferença de comportamento?**
-Nenhuma diferença funcional observada — todos os testes passam em ambas as versões. O exercício serve principalmente como validação de que o projeto continuará funcionando em versões futuras do Java, antecipando incompatibilidades antes que se tornem bloqueantes.
+Nenhuma diferença, todos os testes passam em ambas as versões.
 
 ### Tarefa 7 — Pull Request com Status Check
 
@@ -221,7 +221,7 @@ build ─► docker (needs: build, somente push na main)
 - `docker` depende de `build` e só executa em push para `main`.
 
 **Pergunta — por que paralelismo importa em pipelines de CI?**
-Reduz drasticamente o tempo total de feedback ao desenvolvedor, isola falhas (um job quebrar não cancela os outros, então identificamos múltiplos problemas em uma execução só), e aproveita melhor a capacidade dos runners. Em equipes que abrem dezenas de PRs por dia, paralelismo é a diferença entre minutos e horas de espera.
+Reduz drasticamente o tempo total de feedback ao desenvolvedor, isola falhas (um job quebrar não cancela os outros, então identificamos múltiplos problemas em uma execução só), e aproveita melhor a capacidade dos runners.
 
 ### Tarefa 9 — CD: Publicação da Imagem Docker no Docker Hub
 

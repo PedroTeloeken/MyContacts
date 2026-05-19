@@ -41,7 +41,7 @@ class ContactControllerTest {
     @Test
     void shouldCreateContactSuccessfully() throws Exception {
         Contact contact = new Contact();
-        contact.setName("João");
+        contact.setName("João1");
         contact.setEmail("joao@email.com");
 
         when(service.create(any(Contact.class))).thenReturn(contact);

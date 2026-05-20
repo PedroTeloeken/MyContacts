@@ -25,14 +25,14 @@ class ContactServiceTest {
     @Test
     void create_shouldSaveAndReturnContact() {
         Contact contact = new Contact();
-        contact.setName("João");
+        contact.setName("João1");
         contact.setEmail("joao@email.com");
 
         when(repository.save(contact)).thenReturn(contact);
 
         Contact result = service.create(contact);
 
-        assertThat(result.getName()).isEqualTo("João");
+        assertThat(result.getName()).isEqualTo("João1");
         assertThat(result.getEmail()).isEqualTo("joao@email.com");
         verify(repository, times(1)).save(contact);
     }

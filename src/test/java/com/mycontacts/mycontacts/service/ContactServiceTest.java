@@ -25,7 +25,7 @@ class ContactServiceTest {
     @Test
     void create_shouldSaveAndReturnContact() {
         Contact contact = new Contact();
-        contact.setName("João");
+        contact.setName("João1");
         contact.setEmail("joao@email.com");
 
         when(repository.save(contact)).thenReturn(contact);

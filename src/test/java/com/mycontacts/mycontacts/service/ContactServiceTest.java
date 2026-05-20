@@ -32,7 +32,7 @@ class ContactServiceTest {
 
         Contact result = service.create(contact);
 
-        assertThat(result.getName()).isEqualTo("João");
+        assertThat(result.getName()).isEqualTo("João1");
         assertThat(result.getEmail()).isEqualTo("joao@email.com");
         verify(repository, times(1)).save(contact);
     }

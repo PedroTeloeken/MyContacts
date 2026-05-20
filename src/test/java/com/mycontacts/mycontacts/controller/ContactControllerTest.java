@@ -50,7 +50,7 @@ class ContactControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(contact)))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.name").value("João"))
+            .andExpect(jsonPath("$.name").value("João1"))
             .andExpect(jsonPath("$.email").value("joao@email.com"));
     }
 
